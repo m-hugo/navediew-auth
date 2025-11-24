@@ -1,0 +1,14 @@
+  <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+      android:shortcutId="dumpall"
+      android:shortcutShortLabel="@string/sdumpall"
+      android:shortcutLongLabel="@string/ldumpall">
+      <intent android:action="uk.navediew.authlin.DUMP" />
+    </shortcut>
+	<shortcut
+      android:shortcutId="replaceall"
+      android:shortcutShortLabel="@string/sreplaceall"
+      android:shortcutLongLabel="@string/lreplaceall">
+      <intent android:action="uk.navediew.authlin.REPLACE" />
+    </shortcut>
+  </shortcuts>

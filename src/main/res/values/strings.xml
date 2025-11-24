@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sdumpall">Dump all</string>
+	<string name="ldumpall">Dump all secrets to file</string>
+	<string name="sreplaceall">Replace all</string>
+	<string name="lreplaceall">Replace all secrets with file</string>
+</resources>
