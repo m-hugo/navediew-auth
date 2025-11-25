@@ -7,7 +7,7 @@ plugins {
 	kotlin("plugin.serialization") version "2.0.0"
 }
 dependencies {
-	implementation ("androidx.credentials:credentials:1.3.0") //no 1.4 and size bug from 1.5.0-beta01 to 1.6.0-beta03
+	implementation ("androidx.credentials:credentials:1.3.0") //smallest version, no 1.4 and size bug from 1.5.0-beta01 to 1.6.0-beta03
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0") //smallest version
 }
 android {
@@ -31,11 +31,25 @@ android {
 		}
 	}
 	buildTypes {
-		debug {
-			isDebuggable = false
+		release{
 			isMinifyEnabled = true
 			isShrinkResources = true
-			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+			signingConfig = signingConfigs.getByName("debug")
+			optimization.keepRules {
+				ignoreFrom("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm")
+				ignoreFrom("androidx.annotation:annotation")
+				//ignoreFromAllExternalDependencies(true)
+			}
+		}
+		debug {
+			//isDebuggable = false
+			isMinifyEnabled = true
+			isShrinkResources = true
+			optimization.keepRules {
+				ignoreFrom("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm")
+				ignoreFrom("androidx.annotation:annotation")
+				//ignoreFromAllExternalDependencies(true)
+			}
 		}
 	}
 	lint {

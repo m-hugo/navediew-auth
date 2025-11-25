@@ -209,7 +209,9 @@ class MainActivity : Activity() {
 				out -> out.write(MyCredentialDataManager.loadSetJsonStr(this))
 			}
 			REPLACEALL -> {
-				val str = String(contentResolver.openInputStream(uri)?.readAllBytes()!!);
+				val stream = contentResolver.openInputStream(uri)!!
+				val str = String(stream.readAllBytes()!!);
+				stream.close()
 				MyCredentialDataManager.replaceJson(this, str)
 			}
 		}}
